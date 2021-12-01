@@ -39,7 +39,7 @@ end
   )
 end
 
-5.times do
+3.times do
   t4.pokemons.create(
     name: Faker::Games::Pokemon.name,
     gender: Faker::Gender.binary_type,
