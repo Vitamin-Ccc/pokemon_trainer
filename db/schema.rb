@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2021_12_01_222550) do
 
   create_table "trainers", force: :cascade do |t|
     t.string "name"
-    t.string "age"
+    t.integer "age"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

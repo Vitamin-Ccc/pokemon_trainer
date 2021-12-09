@@ -11,9 +11,9 @@ Trainer.destroy_all
 require "faker"
 
 t1 = Trainer.create(name: "Sky", age: 18)
-t2 = Trainer.create(name: Faker::Name.name, age: rand(16...30))
-t3 = Trainer.create(name: Faker::Name.name, age: rand(16...30))
-t4 = Trainer.create(name: Faker::Name.name, age: rand(16...30))
+t2 = Trainer.create(name: Faker::Name.first_name, age: rand(16...30))
+t3 = Trainer.create(name: Faker::Name.first_name, age: rand(16...30))
+t4 = Trainer.create(name: Faker::Name.first_name, age: rand(16...30))
 
 t1.pokemons.create([
   {name: "Piplup", gender: Faker::Gender.binary_type, fruit: Faker::Food.fruits},
