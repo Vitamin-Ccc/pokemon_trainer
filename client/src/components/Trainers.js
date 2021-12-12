@@ -25,7 +25,9 @@ const Trainers = () => {
   // };
 
   const deleteTrainer = async (id) => {
+    // remove from db
     await axios.delete(`/api/trainers/${id}`);
+    // remove from UI
     setTrainers(trainers.filter((t) => t.id !== id));
   };
 
