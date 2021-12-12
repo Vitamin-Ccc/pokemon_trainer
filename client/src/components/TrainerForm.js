@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useLocation, useParams } from "react-router";
+import { useLocation, useNavigate, useParams } from "react-router";
 
 const TrainerForm = () => {
   const location = useLocation();
+  const navigate = useNavigate();
+
+  // Edit: check to see if that state is there then pull that 'trainer' key out of it. There is no state for New so it will be null.
   const { trainer } = location.state ? location.state : {};
 
   const [name, setName] = useState( trainer ? trainer.name : "");
@@ -18,11 +21,13 @@ const TrainerForm = () => {
       await axios.put(`/api/trainers/${params.id}`, trainerData);
       // let response = await axios.put(`/api/trainers/${params.id}`, trainer);
       // udpateTrainer(response.data)
+      navigate("/trainers")
     }
     else {
-      await axios.put(`/api/trainers`, trainerData);
+      await axios.post(`/api/trainers`, trainerData);
       // let response = await axios.put(`/api/trainers`, trainer);
       // addTrainer(response.data)
+      navigate("/trainers")
     }
   }
 

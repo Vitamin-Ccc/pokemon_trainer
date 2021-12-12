@@ -46,6 +46,3 @@ end
     fruit: Faker::Food.fruits,
   )
 end
-
-
-

@@ -45,8 +45,8 @@ const Trainers = () => {
         <div key = {trainer.id}>
           <p>Name: {trainer.name}</p>
           <p>Age: {trainer.age}</p>
-          <Link to = {`/trainers/${trainer.id}/edit`} state = {{ trainer, x: 1 }}>Edit</Link>
-          {/* <Link to = {`/trainers/${trainer.id}/pokemons`} state = {{ trainer }}>Show</Link> */}
+          <Link to = {`/trainers/${trainer.id}/edit`} state = {{ trainer }}>Edit</Link>
+          <Link to = {`/trainers/${trainer.id}/pokemons`} state = {{ trainer }}>Show</Link>
           <button onClick = {() => deleteTrainer(trainer.id)}>DELETE</button>
         </div>
       );
