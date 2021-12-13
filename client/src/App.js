@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Trainers from './components/Trainers';
 import TrainerForm from './components/TrainerForm';
 import Pokemons from './components/Pokemons';
+import PokemonEdit from './components/PokemonEdit';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/trainers" element={<Trainers />} />
         <Route path="/trainers/:id/pokemons" element={<Pokemons />} />
+        <Route path="/trainers/:trainer_id/pokemons/:id/edit" element={<PokemonEdit />} />
         <Route path="/trainers/new" element={<TrainerForm />} />
         <Route path="/trainers/:id/edit" element={<TrainerForm />} />
       </Routes>

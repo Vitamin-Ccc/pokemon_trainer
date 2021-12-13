@@ -33,6 +33,8 @@ const PokemonNew = (props) => {
           value={fruit}
           onChange={(e) => setFruit(e.target.value)}
         />
+        <br />
+        <br />
         <button>Add</button>
       </form>
     </div>

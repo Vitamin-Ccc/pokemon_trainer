@@ -19,7 +19,7 @@ const Pokemons = () => {
   }
 
   const renderPokemons = () => {
-    return pokemons.map((p) => <Pokemon deletePokemon={deletePokemon} key={p.id} {...p} />)
+    return pokemons.map((p) => <Pokemon deletePokemon={deletePokemon} updatePokemon={updatePokemon} trainerId={trainer.id} key={p.id} {...p} />)
   }
 
   const addPokemon = (pokemon) => {
@@ -31,10 +31,16 @@ const Pokemons = () => {
     setPokemons(pokemons.filter((p) => p.id !== id));
   }
 
+  const updatePokemon = (pokemon) => {
+    let updatedPokemons = pokemons.map((p) => (p.id == pokemon.id ? pokemon : p));
+    setPokemons(updatedPokemons);
+  }
+
   return (
     <div>
-      <h1>Pokemon for {trainer.name}</h1>
+      <h1>Pokemons for {trainer.name}</h1>
       <PokemonNew trainerId={trainer.id} addPokemon={addPokemon} />
+      <hr />
       {renderPokemons()}
     </div>
   )
