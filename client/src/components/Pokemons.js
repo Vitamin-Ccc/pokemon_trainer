@@ -4,7 +4,7 @@ import { useLocation } from "react-router";
 import Pokemon from "./Pokemon";
 import PokemonNew from "./PokemonNew";
 
-const Pokemons = (props) => {
+const Pokemons = () => {
   const [pokemons, setPokemons] = useState([]);
   const location = useLocation();
   const { trainer } = location.state;
@@ -19,17 +19,22 @@ const Pokemons = (props) => {
   }
 
   const renderPokemons = () => {
-    return pokemons.map((p) => <Pokemon key = {p.id} {...p}/>)
+    return pokemons.map((p) => <Pokemon deletePokemon={deletePokemon} key={p.id} {...p} />)
   }
 
   const addPokemon = (pokemon) => {
     setPokemons([pokemon, ...pokemons]);
   }
 
+  const deletePokemon = async (id) => {
+    await axios.delete(`/api/trainers/${trainer.id}/pokemons/${id}`)
+    setPokemons(pokemons.filter((p) => p.id !== id));
+  }
+
   return (
     <div>
       <h1>Pokemon for {trainer.name}</h1>
-      <PokemonNew trainerId = {trainer.id} addPokemon={addPokemon}/>
+      <PokemonNew trainerId={trainer.id} addPokemon={addPokemon} />
       {renderPokemons()}
     </div>
   )
