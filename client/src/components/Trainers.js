@@ -15,31 +15,12 @@ const Trainers = () => {
     setTrainers(res.data);
   };
 
-  // const addTrainer = (trainer) => {
-  //   setTrainers([trainer, ...trainers]);
-  // };
-
-  // const udpateTrainer = (trainer) => {
-  //   let updatedTrainer = trainers.map((t) => (t.id === trainer.id ? trainer : t));
-  //   setTrainers(updatedTrainer);
-  // };
-
   const deleteTrainer = async (id) => {
     // remove from db
     await axios.delete(`/api/trainers/${id}`);
     // remove from UI
     setTrainers(trainers.filter((t) => t.id !== id));
   };
-
-  // const renderTrainers = () => {
-  //   if(trainers.length === 0) {
-  //     return <p>No Trainers</p>;
-  //   }
-  //   return trainers.map((trainer) => {
-  //     return <Trainer key = {trainer.id} deleteTrainer= {deleteTrainer} {...trainer} />
-  //   })
-  // };
-
 
   const renderTrainers = () => {
     return trainers.map((trainer) => {

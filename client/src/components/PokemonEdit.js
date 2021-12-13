@@ -1,19 +1,22 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 
 const PokemonEdit = (props) => {
   const [name, setName] = useState("");
   const [gender, setGender] = useState("");
   const [fruit, setFruit] = useState("");
   const navigate = useNavigate();
+  const params = useParams();
+  console.log(params)
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    let res = await axios.get(`/api/trainers/${props.trainerId}/pokemons/${props.id}`)
+    let res = await axios.get(`/api/trainers/${params.trainer_id}/pokemons/${params.id}`)
+    console.log("props: ", props) 
     setName(res.data.name);
     setGender(res.data.gender);
     setFruit(res.data.fruit);
@@ -21,12 +24,12 @@ const PokemonEdit = (props) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let res = await axios.put(`/api/trainers/${props.trainerId}/pokemons/${props.id}`, {
+    let res = await axios.put(`/api/trainers/${params.trainer_id}/pokemons/${params.id}`, {
       name,
       gender,
       fruit,
     });
-    navigate(`/api/trainers/${props.trainerId}/pokemons`)
+    navigate(`/trainers/${params.trainer_id}/pokemons`)
   }
 
   return (
