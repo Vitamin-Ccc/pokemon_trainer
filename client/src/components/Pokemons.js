@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import Pokemon from "./Pokemon";
+import PokemonNew from "./PokemonNew";
 
 const Pokemons = (props) => {
   const [pokemons, setPokemons] = useState([]);
@@ -21,9 +22,14 @@ const Pokemons = (props) => {
     return pokemons.map((p) => <Pokemon key = {p.id} {...p}/>)
   }
 
+  const addPokemon = (pokemon) => {
+    setPokemons([pokemon, ...pokemons]);
+  }
+
   return (
     <div>
       <h1>Pokemon for {trainer.name}</h1>
+      <PokemonNew trainerId = {trainer.id} addPokemon={addPokemon}/>
       {renderPokemons()}
     </div>
   )

@@ -35,7 +35,7 @@ class Api::PokemonsController < ApplicationController
 
   # sanitizer
   def pokemon_params
-    params.require(:pokemon).permit(:name, :location, :move)
+    params.require(:pokemon).permit(:name, :gender, :fruit)
   end
 
   def set_trainer
